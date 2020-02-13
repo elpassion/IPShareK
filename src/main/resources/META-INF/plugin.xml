@@ -13,7 +13,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="IP ShareK TODO" anchor="right" secondary="false" factoryClass="TodoWindowFactory"/>
+        <toolWindow id="IP ShareK TODO" anchor="right" factoryClass="TodoWindowFactory"/>
         <!-- Add your extensions here -->
     </extensions>
 
