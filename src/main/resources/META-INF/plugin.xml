@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>pl.elpassion.IPShareK</id>
+    <name>IPShareK</name>
+    <vendor email="marek.langiewicz@elpassion.pl" url="https://github.com/elpassion/IPShareK">IPShareK</vendor>
+
+    <description><![CDATA[
+    Share files between IntelliJ instances in local network.<br>
+    <em>Hackathon project</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="IPShareK.IPShareK" text="IPShareK" description="IPShareK menu">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="ExampleAction" class="ExampleAction" text="Example Action" description="Example description"/>
+        </group>
+    </actions>
+</idea-plugin>
