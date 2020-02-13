@@ -22,6 +22,9 @@
         <group id="IPShareK.IPShareK" text="ShareK" description="IPShareK menu">
             <add-to-group group-id="MainMenu" anchor="last"/>
             <action id="ExampleAction" class="ExampleAction" text="Example Action" description="Example description"/>
+            <action id="SendFile" class="SendFileAction" text="Send File" description="Send file to IntelliJ at given IP address.">
+                <keyboard-shortcut first-keystroke="ctrl alt A" second-keystroke="S" keymap="$default"/>
+            </action>
         </group>
     </actions>
 </idea-plugin>
