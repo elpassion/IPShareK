@@ -8,12 +8,16 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+    maven { setUrl("https://kotlin.bintray.com/ktor") }
     mavenCentral()
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
+    implementation("io.ktor:ktor-server-netty:1.3.0")
+    implementation("io.ktor:ktor-client-core:1.3.0")
+    implementation("io.ktor:ktor-client-core-jvm:1.3.0")
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
