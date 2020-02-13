@@ -8,17 +8,32 @@ import com.intellij.ui.components.JBTextField
 import com.intellij.ui.layout.CCFlags
 import com.intellij.ui.layout.GrowPolicy
 import com.intellij.ui.layout.panel
+import io.ktor.application.call
+import io.ktor.http.ContentType
+import io.ktor.response.respondText
+import io.ktor.routing.get
+import io.ktor.routing.routing
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.netty.Netty
 
 class TodoWindowFactory: ToolWindowFactory {
 
     companion object {
         val todosModel = CollectionListModel<String>()
+
+        val server = embeddedServer(Netty, 8080) {
+            routing {
+                get("/status") {
+                    call.respondText("Hi clients! post me some files!", ContentType.Text.Plain)
+                }
+            }
+        }
     }
 
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
-        val newTodoField = JBTextField()
         val todoPanel = panel {
             row {
+                val newTodoField = JBTextField()
                 newTodoField(CCFlags.grow, growPolicy = GrowPolicy.MEDIUM_TEXT)
                 right { button("+") { todosModel.add(0, newTodoField.text); newTodoField.text = "" } }
             }
