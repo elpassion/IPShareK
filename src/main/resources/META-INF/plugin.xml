@@ -13,13 +13,13 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="IP ShareK TODO" anchor="right" factoryClass="TodoWindowFactory"/>
+        <toolWindow id="ShareK" anchor="right" factoryClass="TodoWindowFactory"/>
         <!-- Add your extensions here -->
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <group id="IPShareK.IPShareK" text="IP ShareK" description="IPShareK menu">
+        <group id="IPShareK.IPShareK" text="ShareK" description="IPShareK menu">
             <add-to-group group-id="MainMenu" anchor="last"/>
             <action id="ExampleAction" class="ExampleAction" text="Example Action" description="Example description"/>
         </group>
