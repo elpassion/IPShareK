@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>pl.elpassion.IPShareK</id>
-    <name>IPShareK</name>
-    <vendor email="marek.langiewicz@elpassion.pl" url="https://github.com/elpassion/IPShareK">IPShareK</vendor>
+    <name>IP ShareK</name>
+    <vendor email="marek.langiewicz@elpassion.pl" url="https://github.com/elpassion/IPShareK">IP ShareK</vendor>
 
     <description><![CDATA[
     Share files between IntelliJ instances in local network.<br>
@@ -13,12 +13,13 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="IP ShareK TODO" anchor="right" secondary="false" factoryClass="TodoWindowFactory"/>
         <!-- Add your extensions here -->
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <group id="IPShareK.IPShareK" text="IPShareK" description="IPShareK menu">
+        <group id="IPShareK.IPShareK" text="IP ShareK" description="IPShareK menu">
             <add-to-group group-id="MainMenu" anchor="last"/>
             <action id="ExampleAction" class="ExampleAction" text="Example Action" description="Example description"/>
         </group>
