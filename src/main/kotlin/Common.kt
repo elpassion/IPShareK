@@ -4,7 +4,7 @@ import com.intellij.notification.Notifications
 import com.intellij.openapi.project.Project
 
 
-fun notify(content: String, project: Project?) = Notifications.Bus.notify(notification(content), project)
+fun Project?.notify(content: String) = Notifications.Bus.notify(notification(content), this)
 
 private fun notification(content: String)
         = Notification("some group disp id", "some title", content, NotificationType.WARNING)

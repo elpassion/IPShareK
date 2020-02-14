@@ -6,6 +6,6 @@ class ExampleAction: AnAction("Example action") {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project!!
         Messages.showMessageDialog(project, "Hello from ELPassion", "Example title", Messages.getInformationIcon())
-        notify("jooo", project)
+        project.notify("jooo")
     }
 }

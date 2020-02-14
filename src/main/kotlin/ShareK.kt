@@ -1,4 +1,5 @@
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.ui.CollectionListModel
 import io.ktor.application.call
 import io.ktor.http.ContentType
@@ -12,6 +13,7 @@ import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.server.netty.NettyApplicationEngine
+import java.io.File
 
 object ShareK {
 
@@ -20,14 +22,14 @@ object ShareK {
     fun stop(project: Project) {
         server?.stop(100, 300)
         server = null
-        notify("server stopped", project)
+        project.notify("server stopped")
     }
 
     fun restart(project: Project) {
         stop(project)
         server = createServer(project)
         server?.start(false)
-        notify("server started", project)
+        project.notify("server started")
     }
 
     private var server: NettyApplicationEngine? = null
@@ -40,10 +42,22 @@ private fun createServer(project: Project) = embeddedServer(Netty, 8080) {
             call.respondText("Hi clients! put some files!", ContentType.Text.Plain)
         }
         put("/files/{name}") {
-            val n = call.parameters["name"] + ":\n" + call.receiveText()
-            notify(n, project)
+            val name = call.parameters["name"] ?: "unknown.txt"
+            val content = call.receiveText()
+            project.saveShareKFile(name, content)
             call.respond(HttpStatusCode.OK)
         }
     }
 }
 
+private fun Project.saveShareKFile(name: String, content: String) {
+    val base = basePath ?: run { notify("No project base path"); return }
+    val dir = "$base/sharek/"
+    File(dir).mkdirs()
+    val path = "$dir$name"
+    val file = File(path)
+    file.writeText(content)
+    LocalFileSystem.getInstance().refreshAndFindFileByIoFile(file)
+    notify("Saved:\n$path")
+    // TODO: log clickable file name
+}

@@ -39,7 +39,7 @@ class TodoWindowFactory : ToolWindowFactory {
         val serverPanel = panel {
             row { button("start") { ShareK.restart(project) } }
             row { button("stop") { ShareK.stop(project) } }
-            row { button("status") { notify("TODO", project) } }
+            row { button("status") { project.notify("TODO") } }
         }
 
         val contentFactory = toolWindow.contentManager.factory

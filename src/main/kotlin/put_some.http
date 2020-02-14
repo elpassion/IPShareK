@@ -2,11 +2,19 @@ GET http://localhost:8080/status
 Accept: application/json
 
 ###
-PUT http://localhost:8080/files/testowy.txt
+PUT http://localhost:8080/files/testowy1.txt
 Content-Type: application/json
 
 {
   "aaa": 666,
+  "aaa": 666,
+  "aaa": 666,
+  "aaa": 666,
+  "aaa": 666,
+  "aaa": 666,
+  "aaa": 666,
+  "bbb": 22,
+  "bbb": 22,
   "bbb": 22,
   "c": [1, 2, 3]
 }
