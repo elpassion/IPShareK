@@ -1,11 +1,10 @@
 <idea-plugin>
-    <id>pl.elpassion.IPShareK</id>
-    <name>IP ShareK</name>
-    <vendor email="marek.langiewicz@elpassion.pl" url="https://github.com/elpassion/IPShareK">IP ShareK</vendor>
+    <id>org.development.first_plugin</id>
+    <name>first_plugin</name>
+    <vendor email="hello@elpassion.com" url="http://www.elpassion.com">ELP</vendor>
 
     <description><![CDATA[
-    Share files between IntelliJ instances in local network.<br>
-    <em>Hackathon project</em>
+    Testing plugins development. Lorem ipsum.
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -13,18 +12,14 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="ShareK" anchor="right" factoryClass="TodoWindowFactory"/>
-        <!-- Add your extensions here -->
+        <toolWindow id="IP ShareK TODO" anchor="right" factoryClass="TodoWindowFactory"/>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <group id="IPShareK.IPShareK" text="ShareK" description="IPShareK menu">
-            <add-to-group group-id="MainMenu" anchor="last"/>
-            <action id="ExampleAction" class="ExampleAction" text="Example Action" description="Example description"/>
-            <action id="SendFile" class="SendFileAction" text="Send File" description="Send file to IntelliJ at given IP address.">
-                <keyboard-shortcut first-keystroke="ctrl alt A" second-keystroke="S" keymap="$default"/>
-            </action>
-        </group>
+        <action id="PopupDialogAction" class="PopupDialogAction" text="Pop Dialog Action"
+                description="SDK action example">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
     </actions>
 </idea-plugin>

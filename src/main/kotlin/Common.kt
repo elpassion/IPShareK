@@ -8,4 +8,3 @@ fun notify(content: String, project: Project?) = Notifications.Bus.notify(notifi
 
 private fun notification(content: String)
         = Notification("some group disp id", "some title", content, NotificationType.WARNING)
-
