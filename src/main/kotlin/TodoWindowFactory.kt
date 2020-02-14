@@ -42,13 +42,13 @@ class TodoWindowFactory : ToolWindowFactory {
             row { button("status") { project.notify("TODO") } }
         }
 
-        val contentFactory = toolWindow.contentManager.factory
-        val todoContent = contentFactory.createContent(todoPanel, "TODO", true)
-        val ktorContent = contentFactory.createContent(ktorPanel, "KTOR", true)
-        val otherContent = contentFactory.createContent(otherPanel, "Other content", true)
-        toolWindow.contentManager.addContent(todoContent)
-        toolWindow.contentManager.addContent(ktorContent)
-        toolWindow.contentManager.addContent(otherContent)
+        val tabContent = toolWindow.contentManager.factory::createContent
+
+        toolWindow.contentManager.run {
+            addContent(tabContent(todoPanel, "TODO", true))
+            addContent(tabContent(ktorPanel, "KTOR", true))
+            addContent(tabContent(otherPanel, "Other content", true))
+        }
     }
 }
 
