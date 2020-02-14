@@ -6,7 +6,7 @@ PUT http://localhost:8080/files/testowy.txt
 Content-Type: application/json
 
 {
-  "aaa": 345,
+  "aaa": 666,
   "bbb": 22,
   "c": [1, 2, 3]
 }
