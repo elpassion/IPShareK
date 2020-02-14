@@ -3,6 +3,7 @@ import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.ui.CollectionListModel
 import io.ktor.application.call
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.request.put
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -49,7 +50,7 @@ object ShareK {
 
     private var server: NettyApplicationEngine? = null
 
-    private val client = HttpClient()
+    private val client = HttpClient(OkHttp)
 }
 
 
