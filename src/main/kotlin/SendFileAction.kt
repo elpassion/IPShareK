@@ -11,6 +11,6 @@ class SendFileAction: AnAction("Send file") {
             return
         }
         val content = file.inputStream.reader().readText()
-        project.notify("TODO send current file\nname:\n${file.name}\ncontent:\n$content")
+        ShareK.send(file.name, content, project)
     }
 }

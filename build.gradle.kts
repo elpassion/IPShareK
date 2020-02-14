@@ -18,6 +18,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:1.3.0")
     implementation("io.ktor:ktor-client-core:1.3.0")
     implementation("io.ktor:ktor-client-core-jvm:1.3.0")
+    implementation("io.ktor:ktor-client-okhttp:1.3.0")
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 

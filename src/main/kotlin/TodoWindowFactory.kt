@@ -36,7 +36,7 @@ class TodoWindowFactory : ToolWindowFactory {
             }
         }
 
-        val serverPanel = panel {
+        val ktorPanel = panel {
             row { button("start") { ShareK.restart(project) } }
             row { button("stop") { ShareK.stop(project) } }
             row { button("status") { project.notify("TODO") } }
@@ -44,10 +44,10 @@ class TodoWindowFactory : ToolWindowFactory {
 
         val contentFactory = toolWindow.contentManager.factory
         val todoContent = contentFactory.createContent(todoPanel, "TODO", true)
-        val serverContent = contentFactory.createContent(serverPanel, "Server", true)
+        val ktorContent = contentFactory.createContent(ktorPanel, "KTOR", true)
         val otherContent = contentFactory.createContent(otherPanel, "Other content", true)
         toolWindow.contentManager.addContent(todoContent)
-        toolWindow.contentManager.addContent(serverContent)
+        toolWindow.contentManager.addContent(ktorContent)
         toolWindow.contentManager.addContent(otherContent)
     }
 }

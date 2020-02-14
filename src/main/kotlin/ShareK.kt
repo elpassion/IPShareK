@@ -2,6 +2,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.ui.CollectionListModel
 import io.ktor.application.call
+import io.ktor.client.HttpClient
+import io.ktor.client.request.put
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receiveText
@@ -13,6 +15,7 @@ import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.server.netty.NettyApplicationEngine
+import kotlinx.coroutines.runBlocking
 import java.io.File
 
 object ShareK {
@@ -32,7 +35,21 @@ object ShareK {
         project.notify("server started")
     }
 
+    fun send(name: String, content: String, project: Project) {
+        val addr = try { todos.getElementAt(0) } catch (e: IndexOutOfBoundsException) {
+            project.notify("Please put your friend ip addr as first todo note")
+            return
+        }
+        runBlocking {
+            client.put<Unit>("http://$addr:8080/files/$name") {
+                body = content
+            }
+        }
+    }
+
     private var server: NettyApplicationEngine? = null
+
+    private val client = HttpClient()
 }
 
 
